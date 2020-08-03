@@ -1,51 +1,28 @@
-#include "functions.cpp"
-
-
-
-
-int main(){
-greetAndInstruct();
-
-char board[27];
-for (int i=0;i<27;i++){
-	board[i]='a'+i;
+/*
+ * main.cpp
+ *
+ *  Created on: 2020?3?11?
+ *      Author: 18796
+ */
+#include"blackjack.h"
+int main ()
+{
+cout << "\tWelcome to the Comp322 Blackjack game!" << endl << endl ;
+BlackJackGame game;
+// The main loop of the game
+bool playAgain = true ;
+char answer = 'y' ;
+while (playAgain)
+{
+game.play();
+// Check whether the player would like to play another round
+cout << "Would you like another round? (y/n): " ;
+cin >> answer;
+cout << endl << endl ;
+playAgain = (answer == 'y' ? true : false );
 }
-displayBoard(board);
-int count=1;
-while(count<=27){
-	//human turn
-	count++;
-	cout<<"Please enter a index:"<<endl;
-	int index;
-
-	while(true){
-		cin>> index;
-		if(!checkIfLegal(index-1,board)){
-		cin.clear();
-		cin.ignore();
-	}else{
-		break;
-	}
-	}
-		board[index-1]='X';
-        displayBoard(board);
-		if(checkWinner(board)){
-			cout<<"human wins!"<<endl;
-			break;
-		}
-
-	//computer move
-	cout<<"now it is computer's move"<<endl;
-	computerMove(board);
-	count++;
-	displayBoard(board);
-	if(checkWinner(board)){
-		cout<<"computer wins!"<<endl;
-		break;
-	}
-
+cout << "Gave over!" ;
+return 0 ;
 }
- if(count==28){
-	 cout<<"TIE!"<<endl;
- }
-}
+
+
